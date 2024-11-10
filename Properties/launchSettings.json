@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "UNDAI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "UNDAI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

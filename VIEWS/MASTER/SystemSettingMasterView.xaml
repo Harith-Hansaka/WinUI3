@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="UNDAI.VIEWS.MASTER.SystemSettingMasterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:UNDAI.VIEWS.MASTER"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+
+    <Viewbox
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Stretch="Uniform"
+        StretchDirection="Both"
+        UseLayoutRounding="True">
+        <Grid
+            Width="1920"
+            Height="1200"
+            Background="LightYellow">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10,10,10,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0">
+
+                    <Border
+                        Margin="10"
+                        BorderBrush="Blue"
+                        BorderThickness="0.5">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0"
+                                FontSize="35"
+                                FontWeight="Bold"
+                                Text="ネットワーク設定" />
+
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,5">
+
+                                <TextBlock FontSize="30" Text="雲台IPアドレス" />
+                            </Border>
+
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="UndaiIPAddress_PointerPressed"
+                                    Text="{x:Bind ViewModel.UndaiIPAddress, Mode=OneWay}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="30"
+                                Text="サブネットマスク" />
+
+                            <Border
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="UndaiSubnet_PointerPressed"
+                                    Text="{Binding UndaiSubnet, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="デフォルトゲートウェイ" />
+
+                            <Border
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Margin="0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="DefaultGateway_PointerPressed"
+                                    Text="{Binding DefaultGateway, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontSize="30"
+                                Text="無線機IPアドレス" />
+
+                            <Border
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="MasterAntennaIPAddress_PointerPressed"
+                                    Text="{Binding MasterAntennaIPAddress, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Margin="10"
+                        BorderBrush="Blue"
+                        BorderThickness="0.5">
+                        <Grid Margin="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Margin="0,0"
+                                FontSize="35"
+                                FontWeight="SemiBold"
+                                Text="雲台設定" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="水平角"
+                                TextAlignment="Center" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="府仰角"
+                                TextAlignment="Center" />
+
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="原点オフセット(度)" />
+
+                            <Border
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="OriginOffsetAzimuth_PointerPressed"
+                                    Text="{Binding OriginOffsetAzimuth, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+
+                            <Border
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Margin="5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="OriginOffsetElevation_PointerPressed"
+                                    Text="{Binding OriginOffsetElevation, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontSize="30"
+                                Text="手動高速 (度/sec)" />
+
+                            <Border
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Margin="5,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="HighSpeedSetAzimuth_PointerPressed"
+                                    Text="{Binding HighSpeedSetAzimuth, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+
+                            <Border
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                Margin="5,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="HighSpeedSetElevation_PointerPressed"
+                                    Text="{Binding HighSpeedSetElevation, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="手動低速 (度/sec)" />
+
+                            <Border
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Margin="5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="LowSpeedSetAzimuth_PointerPressed"
+                                    Text="{Binding LowSpeedSetAzimuth, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <Border
+                                Grid.Row="4"
+                                Grid.Column="2"
+                                Margin="5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="LowSpeedSetElevation_PointerPressed"
+                                    Text="{Binding LowSpeedSetElevation, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="寸動角度(度)" />
+
+
+                            <Border
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Margin="5,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="InchingSpeedSetAzimuth_PointerPressed"
+                                    Text="{Binding InchingSpeedSetAzimuth, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <Border
+                                Grid.Row="5"
+                                Grid.Column="2"
+                                Margin="5,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="InchingSpeedSetElevation_PointerPressed"
+                                    Text="{Binding InchingSpeedSetElevation, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                        </Grid>
+
+                    </Border>
+
+                    <Border
+                        Margin="5"
+                        BorderBrush="Blue"
+                        BorderThickness="0.0">
+
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+                            <Button
+                                Width="250"
+                                Height="70"
+                                Margin="5,0"
+                                Padding="5"
+                                Command="{x:Bind ViewModel.AlarmResetCommand}"
+                                Content="アラームリセット"
+                                FontSize="40" />
+                            <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                            <Button
+                                Width="250"
+                                Height="70"
+                                Margin="5,0"
+                                Padding="5"
+                                Command="{x:Bind ViewModel.AlarmHistoryMasterNavigateCommand}"
+                                Content="アラーム履歴"
+                                FontSize="40" />
+                            <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="2">
+
+                    <Border
+                        Margin="10"
+                        BorderBrush="Blue"
+                        BorderThickness="0.5">
+                        <Grid Margin="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.5*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0"
+                                FontSize="35"
+                                FontWeight="Bold"
+                                Text="広域サーチ設定" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="広域サーチ速度(度/sec)[1-100]" />
+
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="PeakSearchSpeed_PointerPressed"
+                                    Text="{Binding PeakSearchSpeed, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="広域サーチ水平角度(度)" />
+
+                            <Border
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="0,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="PeakSearchAzimuth_PointerPressed"
+                                    Text="{Binding PeakSearchAzimuth, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="広域サーチ垂直角度(度)" />
+
+                            <Border
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Margin="0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="PeakSearchElevation_PointerPressed"
+                                    Text="{Binding PeakSearchElevation, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="打切り減衰(dBm)" />
+
+                            <Border
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Margin="0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="PeakSearchRSSITurnLevel_PointerPressed"
+                                    Text="{Binding PeakSearchRSSITurnLevel, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+                            <TextBlock
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="RSSI遅延(秒)" />
+
+                            <Border
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Margin="0,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="PeakSearchRSSDelay_PointerPressed"
+                                    Text="{Binding PeakSearchRSSIDelay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="広域成功RSSIレベル(dBm)" />
+
+                            <Border
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Margin="0,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="PeakSearchRSSILevel_PointerPressed"
+                                    Text="{Binding PeakSearchRSSILevel, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <Canvas
+                                Grid.Row="0"
+                                Grid.RowSpan="7"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Background="#e0ffffe0"
+                                Visibility="{Binding SystemControllerAccess}" />
+
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Margin="10"
+                        BorderBrush="Blue"
+                        BorderThickness="0.5">
+                        <Grid Margin="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.5*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="45" />
+                                <RowDefinition Height="45" />
+                                <RowDefinition Height="45" />
+                                <RowDefinition Height="45" />
+                                <RowDefinition Height="45" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0"
+                                FontSize="35"
+                                FontWeight="Bold"
+                                Text="詳細サーチ設定" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="詳細サーチステップ角(度)" />
+
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="0,0,0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="DetailedPeakSearchStepAngle_PointerPressed"
+                                    Text="{Binding DetailedPeakSearchStepAngle, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="上下サーチ角(±)" />
+
+                            <Border
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="0,0,0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="UpDownSearchAngle_PointerPressed"
+                                    Text="{Binding UpDownSearchAngle, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Margin="0,0"
+                                FontSize="30"
+                                Text="詳細サーチ成功RSSIレベル(dBm)" />
+
+                            <Border
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Margin="0,0,0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="DetailedPeakSearchRSSILevel_PointerPressed"
+                                    Text="{Binding DetailedPeakSearchRSSILevel, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="ステップ安定秒" />
+
+                            <Border
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Margin="0,0,0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="StepStability_PointerPressed"
+                                    Text="{Binding StepStability, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <TextBlock
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="打切り減衰(dBm)" />
+
+                            <Border
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Margin="0,0"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="RSSITurnbackThresholdLevel_PointerPressed"
+                                    Text="{Binding RSSITurnbackThresholdLevel, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <Canvas
+                                Grid.Row="0"
+                                Grid.RowSpan="6"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Background="#e0ffffe0"
+                                Visibility="{Binding SystemControllerAccess}" />
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Margin="10"
+                        BorderBrush="Blue"
+                        BorderThickness="0.5">
+                        <Grid Margin="10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.5*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="100" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="0,5"
+                                FontSize="30"
+                                Text="連続運転終了時間(分)" />
+
+                            <Border
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,5"
+                                Background="White"
+                                BorderBrush="Blue"
+                                BorderThickness="1"
+                                CornerRadius="5">
+                                <TextBlock
+                                    FontSize="30"
+                                    PointerPressed="ContinuousOperationTime_PointerPressed"
+                                    Text="{Binding ContinuousOperationTime, UpdateSourceTrigger=PropertyChanged}" />
+                            </Border>
+
+                            <Grid
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Button
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Width="250"
+                                    Height="70"
+                                    Margin="10"
+                                    Padding="5"
+                                    Command="{x:Bind ViewModel.ContinuousOperationTimerStopCommand}"
+                                    Content="停止"
+                                    FontSize="30" />
+                                <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                                <Canvas
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Background="#e0ffffe0"
+                                    Visibility="{Binding ContinuousOperationTimerStopCommandAccess}" />
+
+                                <Button
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Width="250"
+                                    Height="70"
+                                    Margin="10"
+                                    Padding="5"
+                                    Command="{x:Bind ViewModel.ContinuousOperationTimeCommand}"
+                                    Content="連続運転開始"
+                                    FontSize="30" />
+                                <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                                <Canvas
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Background="#e0ffffe0"
+                                    Visibility="{Binding ContinuousOperationTimeCommandAccess}" />
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+
+                </StackPanel>
+
+            </Grid>
+
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="400,700,400,450"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+
+                <TextBlock
+                    Margin="30,10,20,10"
+                    VerticalAlignment="Center"
+                    FontSize="30"
+                    Foreground="Black"
+                    Text="PIN"
+                    TextAlignment="Center" />
+
+                <Border
+                    Height="AUTO"
+                    Margin="10,0"
+                    Background="Black"
+                    CornerRadius="5">
+
+                    <TextBlock
+                        x:Name="SystemUnlockPIN"
+                        Width="150"
+                        VerticalAlignment="Center"
+                        FontSize="30"
+                        Foreground="White"
+                        PointerPressed="SystemUnlockPIN_PointerPressed"
+                        Text="{Binding SystemUnlockPIN}"
+                        TextAlignment="Center" />
+
+                </Border>
+
+            </StackPanel>
+
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,750,1000,100">
+                <UserControl IsEnabled="{x:Bind ViewModel.SystemSettingUnlock}">
+                    <Grid
+                        Width="700"
+                        Height="AUTO"
+                        HorizontalAlignment="Center">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                                <RowDefinition Height="AUTO" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel
+                                Grid.Row="0"
+                                Margin="10"
+                                HorizontalAlignment="Center"
+                                Background="LightCyan"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="30,10,20,10"
+                                    VerticalAlignment="Center"
+                                    FontSize="30"
+                                    Foreground="Black"
+                                    Text="府仰角度"
+                                    TextAlignment="Center" />
+
+                                <Border
+                                    Height="AUTO"
+                                    Background="Black"
+                                    CornerRadius="5">
+
+                                    <TextBlock
+                                        Width="150"
+                                        VerticalAlignment="Center"
+                                        FontSize="30"
+                                        Foreground="White"
+                                        Text="{Binding ElevationAngleInput100}"
+                                        TextAlignment="Center" />
+
+                                </Border>
+
+                                <TextBlock
+                                    Margin="30,10,20,10"
+                                    VerticalAlignment="Center"
+                                    FontSize="30"
+                                    Foreground="Black"
+                                    Text="水平角度"
+                                    TextAlignment="Center" />
+
+                                <Border
+                                    Height="AUTO"
+                                    Background="Black"
+                                    CornerRadius="5">
+
+                                    <TextBlock
+                                        Width="150"
+                                        VerticalAlignment="Center"
+                                        FontSize="30"
+                                        Foreground="White"
+                                        Text="{Binding}"
+                                        TextAlignment="Center" />
+
+                                </Border>
+
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Row="1"
+                                Margin="10"
+                                HorizontalAlignment="Center"
+                                Background="LightSteelBlue"
+                                Orientation="Horizontal">
+                                <Border>
+                                    <Button
+                                        x:Name="btnUpArrowMainPage"
+                                        Width="152"
+                                        Height="152"
+                                        Margin="5"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
+                                        PointerPressed="btnUpArrowMainPage_PointerPressed"
+                                        PointerReleased="btnUpArrowMainPage_PointerReleased" />
+                                    <!--  Style="{StaticResource ClickableButtonStyleUP}"/>  -->
+                                </Border>
+
+                                <Button
+                                    x:Name="btnDownArrowMainPage"
+                                    Width="152"
+                                    Height="152"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    PointerPressed="btnDownArrowMainPage_PointerPressed"
+                                    PointerReleased="btnDownArrowMainPage_PointerReleased" />
+                                <!--  Style="{StaticResource ClickableButtonStyleDOWN}"/>  -->
+                                <Button
+                                    x:Name="btnCCWArrowMainPage"
+                                    Width="152"
+                                    Height="152"
+                                    Margin="20,0,5,0"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    PointerPressed="btnCCWArrowMainPage_PointerPressed"
+                                    PointerReleased="btnCCWArrowMainPage_PointerReleased" />
+                                <!--  Style="{StaticResource ClickableButtonStyleCCW}">  -->
+                                <Image Width="150" Source="\RESOURCES\CCW ROTATE.png" />
+
+
+                                <Button
+                                    x:Name="btnCWArrowMainPage"
+                                    Width="152"
+                                    Height="152"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    PointerPressed="btnCWArrowMainPage_PointerPressed"
+                                    PointerReleased="btnCWArrowMainPage_PointerReleased" />
+                                <!--  Style="{StaticResource ClickableButtonStyleCW}"/>  -->
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Row="3"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <Border
+                                    Width="300"
+                                    Height="60"
+                                    Margin="10">
+                                    <Button
+                                        Command="{x:Bind ViewModel.ElevationEncorderResetCommand}"
+                                        Content="Ele. Encorder Reset"
+                                        FontSize="30" />
+                                    <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                                </Border>
+
+                                <Border
+                                    Width="300"
+                                    Height="60"
+                                    Margin="10">
+                                    <Button
+                                        Command="{x:Bind ViewModel.AzimuthEncorderResetCommand}"
+                                        Content="Azi. Encorder Reset"
+                                        FontSize="30" />
+                                    <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                                </Border>
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Grid>
+                </UserControl>
+            </Grid>
+            <UserControl IsEnabled="{x:Bind ViewModel.SystemSettingUnlock, Mode=OneWay}">
+                <Grid
+                    Width="300"
+                    Height="AUTO"
+                    Margin="800,850,0,20"
+                    HorizontalAlignment="Left">
+
+                    <TextBlock
+                        Margin="20,0"
+                        FontSize="15"
+                        Text="{x:Bind ViewModel.ReceivedData}" />
+
+                </Grid>
+            </UserControl>
+            <UserControl IsEnabled="{x:Bind ViewModel.SystemSettingUnlock, Mode=OneWay}">
+                <Grid
+                    Width="300"
+                    Height="AUTO"
+                    Margin="0,850,600,20"
+                    HorizontalAlignment="Right">
+
+                    <TextBlock
+                        Margin="20,0"
+                        FontSize="15"
+                        Text="{x:Bind ViewModel.ReceivedData2}" />
+
+                </Grid>
+            </UserControl>
+
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="00,1100,0,0">
+                <Border
+                    Height="70"
+                    Margin="20,0,5,5"
+                    HorizontalAlignment="Left">
+                    <Button
+                        Width="250"
+                        Height="70"
+                        Padding="5"
+                        Background="#5a5a5a"
+                        Command="{x:Bind ViewModel.MainPageNavigateCommand}"
+                        Content="戻る"
+                        FontSize="40"
+                        Foreground="White" />
+                    <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                </Border>
+                <Border
+                    Height="70"
+                    Margin="5,0,30,5"
+                    HorizontalAlignment="Right">
+                    <Button
+                        x:Name="SystemSettingRegister"
+                        Width="250"
+                        Height="70"
+                        Padding="5"
+                        Background="#1d9dfd"
+                        Command="{x:Bind ViewModel.SystemSettingRegister}"
+                        Content="登録"
+                        FontSize="40"
+                        Foreground="White" />
+                    <!--  Style="{StaticResource ClickableButtonStyle1}" />  -->
+                </Border>
+            </Grid>
+
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="1000,500,0,0">
+                <Border
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+
+                        <Viewbox Height="40">
+                            <RadioButton VerticalAlignment="Center" IsChecked="{x:Bind ViewModel.MasterChecked, Mode=TwoWay}" />
+                        </Viewbox>
+                        <TextBlock
+                            FontSize="40"
+                            FontWeight="Bold"
+                            Text="MASTER" />
+
+                        <Viewbox Height="40" Margin="80,0,0,0">
+                            <RadioButton VerticalAlignment="Center" IsChecked="{x:Bind ViewModel.SlaveChecked, Mode=TwoWay}" />
+                        </Viewbox>
+                        <TextBlock
+                            FontSize="40"
+                            FontWeight="Bold"
+                            Text="SLAVE" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Page>

@@ -1,0 +1,205 @@
+<Window
+    x:Class="UNDAI.VIEWS.BASE.NumericKeyboardWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:UNDAI.VIEWS.BASE"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Margin="10">
+        <Grid.Resources>
+            <!--  Define the ControlTemplate for the button  -->
+            <ControlTemplate x:Key="ClickableButtonTemplate" TargetType="Button">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+
+            <SolidColorBrush x:Key="numbersColor" Color="#444444" />
+            <SolidColorBrush x:Key="operatorsColor" Color="Orange" />
+            <SolidColorBrush x:Key="foregroundColor" Color="Black" />
+
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Template" Value="{StaticResource ClickableButtonTemplate}" />
+            </Style>
+
+            <Style x:Key="numberButtonStyle" TargetType="Button">
+                <Setter Property="Template" Value="{StaticResource ClickableButtonTemplate}" />
+                <Setter Property="Background" Value="{StaticResource numbersColor}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="Margin" Value="5" />
+            </Style>
+
+            <Style
+                x:Key="operatorButtonstyle"
+                BasedOn="{StaticResource numberButtonStyle}"
+                TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource operatorsColor}" />
+            </Style>
+
+            <Style
+                x:Key="additionalButtonsStyle"
+                BasedOn="{StaticResource numberButtonStyle}"
+                TargetType="Button">
+                <Setter Property="Background" Value="LightGray" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+        </Grid.Resources>
+
+        <Grid Margin="10">
+            <Grid Margin="0,10,0,0" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3">
+
+                    <TextBlock
+                        x:Name="KeyPad"
+                        Margin="5"
+                        VerticalAlignment="Bottom"
+                        FontSize="45"
+                        Foreground="White"
+                        TextAlignment="Right" />
+
+                </Border>
+                <!--  Numeric buttons  -->
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Click="NumericButton_Click"
+                    Content="1"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Click="NumericButton_Click"
+                    Content="2"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Click="NumericButton_Click"
+                    Content="3"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Click="NumericButton_Click"
+                    Content="4"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Click="NumericButton_Click"
+                    Content="5"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Click="NumericButton_Click"
+                    Content="6"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Click="NumericButton_Click"
+                    Content="7"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Click="NumericButton_Click"
+                    Content="8"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Click="NumericButton_Click"
+                    Content="9"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Click="NumericButton_Click"
+                    Content="."
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Click="NumericButton_Click"
+                    Content="0"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <Button
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Click="BackspaceButton_Click"
+                    Content="⌫"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+
+                <!--  +/- button  -->
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Click="SignChangeButton_Click"
+                    Content="+/-"
+                    FontSize="24"
+                    Style="{StaticResource numberButtonStyle}" />
+                <!--  Enter button  -->
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Click="EnterButton_Click"
+                    Content="Enter"
+                    FontSize="24"
+                    Style="{StaticResource operatorButtonstyle}" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

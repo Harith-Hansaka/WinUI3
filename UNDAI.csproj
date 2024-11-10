@@ -1,0 +1,289 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>UNDAI</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="MODELS\BASE\ElevationCalculationModel.cs" />
+    <Compile Remove="MODELS\BASE\ElevationProfileGenerateModel.cs" />
+    <Compile Remove="MODELS\BASE\GPSMapIntoCircle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="RESOURCES\CCW ROTATE.gif" />
+    <None Remove="RESOURCES\CCW ROTATE.png" />
+    <None Remove="RESOURCES\CCW ROTATE2.gif" />
+    <None Remove="RESOURCES\CW ROTATE.gif" />
+    <None Remove="RESOURCES\CW ROTATE.png" />
+    <None Remove="RESOURCES\CW ROTATE2.gif" />
+    <None Remove="RESOURCES\DOWN ARROW.gif" />
+    <None Remove="RESOURCES\DOWN ARROW.png" />
+    <None Remove="RESOURCES\DOWN ARROW2.gif" />
+    <None Remove="RESOURCES\LOADING SCREEN.gif" />
+    <None Remove="RESOURCES\MAPDATA.csv" />
+    <None Remove="RESOURCES\RESET UNDAI.gif" />
+    <None Remove="RESOURCES\RESTART UNDAI.gif" />
+    <None Remove="RESOURCES\UP ARROW.gif" />
+    <None Remove="RESOURCES\UP ARROW.png" />
+    <None Remove="RESOURCES\UP ARROW2.gif" />
+    <None Remove="VIEWS\BASE\NumericKeyboardWindow.xaml" />
+    <None Remove="VIEWS\BASE\UNDAIRestartMessageBox.xaml" />
+    <None Remove="VIEWS\MASTER\AlarmHistoryMasterView.xaml" />
+    <None Remove="VIEWS\MASTER\MainPageMasterView.xaml" />
+    <None Remove="VIEWS\MASTER\SelfRegMasterView.xaml" />
+    <None Remove="VIEWS\MASTER\StationDBMasterView.xaml" />
+    <None Remove="VIEWS\MASTER\Substation1ElevationProfileView.xaml" />
+    <None Remove="VIEWS\MASTER\SubstationDB1MasterView.xaml" />
+    <None Remove="VIEWS\MASTER\SubstationDB2MasterView.xaml" />
+    <None Remove="VIEWS\MASTER\SubstationDB3MasterView.xaml" />
+    <None Remove="VIEWS\MASTER\SubstationDB4MasterView.xaml" />
+    <None Remove="VIEWS\MASTER\SubstationMasterView.xaml" />
+    <None Remove="VIEWS\MASTER\SystemResetSettingMasterView.xaml" />
+    <None Remove="VIEWS\MASTER\SystemSettingMasterView.xaml" />
+    <None Remove="VIEWS\SLAVE\AlarmHistorySlaveView.xaml" />
+    <None Remove="VIEWS\SLAVE\BaseStationRegSlaveView.xaml" />
+    <None Remove="VIEWS\SLAVE\MainPageSlaveView.xaml" />
+    <None Remove="VIEWS\SLAVE\SelfRegSlaveView.xaml" />
+    <None Remove="VIEWS\SLAVE\StationDBSlaveView.xaml" />
+    <None Remove="VIEWS\SLAVE\SystemResetSettingSlaveView.xaml" />
+    <None Remove="VIEWS\SLAVE\SystemSettingSlaveView.xaml" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+	
+ <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.1.240916" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.DataGrid" Version="7.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <!--
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\BASE\UNDAIRestartMessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\BASE\NumericKeyboardWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\SLAVE\SystemSettingSlaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\SLAVE\SystemResetSettingSlaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\SLAVE\StationDBSlaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\SLAVE\SelfRegSlaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\SLAVE\MainPageSlaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\SLAVE\BaseStationRegSlaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\SLAVE\AlarmHistorySlaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SystemSettingMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SystemResetSettingMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SubstationDB4MasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SubstationDB3MasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SubstationDB2MasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SubstationDB1MasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\StationDBMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\Substation1ElevationProfileView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SelfRegMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\AlarmHistoryMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\SubstationMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VIEWS\MASTER\MainPageMasterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MODELS\BASE\" />
+  </ItemGroup>
+
+<ItemGroup>
+    <!-- Assets -->
+    <Content Include="Assets\**" />
+
+    <!-- Resources -->
+    <Content Include="RESOURCES\**">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+</ItemGroup>
+
+<ItemGroup>
+  <Content Remove="RESOURCES\CCW ROTATE.gif" />
+  <Content Remove="RESOURCES\CCW ROTATE.png" />
+  <Content Remove="RESOURCES\CCW ROTATE2.gif" />
+  <Content Remove="RESOURCES\CW ROTATE.gif" />
+  <Content Remove="RESOURCES\CW ROTATE.png" />
+  <Content Remove="RESOURCES\CW ROTATE2.gif" />
+  <Content Remove="RESOURCES\DOWN ARROW.gif" />
+  <Content Remove="RESOURCES\DOWN ARROW.png" />
+  <Content Remove="RESOURCES\DOWN ARROW2.gif" />
+  <Content Remove="RESOURCES\LOADING SCREEN.gif" />
+  <Content Remove="RESOURCES\LOADING-SCREEN-ICON.gif" />
+  <Content Remove="RESOURCES\MAPDATA.csv" />
+  <Content Remove="RESOURCES\RESET UNDAI.gif" />
+  <Content Remove="RESOURCES\RESTART UNDAI.gif" />
+  <Content Remove="RESOURCES\UP ARROW.gif" />
+  <Content Remove="RESOURCES\UP ARROW.png" />
+  <Content Remove="RESOURCES\UP ARROW2.gif" />
+</ItemGroup>
+
+<ItemGroup>
+  <Resource Include="RESOURCES\CCW ROTATE.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\CCW ROTATE.png">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\CCW ROTATE2.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\CW ROTATE.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\CW ROTATE.png">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\CW ROTATE2.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\DOWN ARROW.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\DOWN ARROW.png">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\DOWN ARROW2.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\LOADING SCREEN.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\LOADING-SCREEN-ICON.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\MAPDATA.csv">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\RESET UNDAI.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\RESTART UNDAI.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\UP ARROW.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\UP ARROW.png">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+  <Resource Include="RESOURCES\UP ARROW2.gif">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Resource>
+</ItemGroup>
+
+  <!--
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+</Project>

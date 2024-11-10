@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="UNDAI.VIEWS.MASTER.SelfRegMasterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:UNDAI.VIEWS.MASTER"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+
+    <Viewbox
+        x:Name="viewBox1"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Stretch="Uniform"
+        StretchDirection="Both"
+        UseLayoutRounding="True">
+
+        <Grid
+            Width="1920"
+            Height="1200"
+            Background="LightYellow">
+
+            <StackPanel Margin="10">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="190*" />
+                        <ColumnDefinition Width="150*" />
+                        <ColumnDefinition Width="190*" />
+                        <ColumnDefinition Width="150*" />
+                        <ColumnDefinition Width="189*" />
+                        <ColumnDefinition Width="195*" />
+                        <ColumnDefinition Width="190*" />
+                        <ColumnDefinition Width="220*" />
+                        <ColumnDefinition Width="190*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO" />
+                        <RowDefinition Height="AUTO" />
+                        <RowDefinition Height="AUTO" />
+                        <RowDefinition Height="AUTO" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="13">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            Margin="10"
+                            FontSize="50"
+                            FontWeight="Bold"
+                            Text="自局登録" />
+
+                        <StackPanel
+                            Grid.Row="0"
+                            Grid.Column="4"
+                            Grid.ColumnSpan="13"
+                            Orientation="Horizontal">
+                            <CheckBox
+                                Margin="10,10"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                IsChecked="{Binding IsLatLongEnabled, Mode=TwoWay}">
+
+                                <CheckBox.RenderTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.RenderTransform>
+
+                            </CheckBox>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="30"
+                                Text="位置情報を手動で入力する" />
+
+                            <CheckBox
+                                Margin="60,10,10,10"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                IsChecked="{Binding IsElevationEnabled, Mode=TwoWay}">
+
+                                <CheckBox.RenderTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.RenderTransform>
+
+                            </CheckBox>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="30"
+                                Text="標高情報を手動で入力する" />
+
+                            <CheckBox
+                                Margin="60,10,10,10"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                IsChecked="{Binding IsIPAddressShow, Mode=TwoWay}">
+
+                                <CheckBox.RenderTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.RenderTransform>
+
+                            </CheckBox>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="30"
+                                Text="IPアドレスを表示する" />
+
+                        </StackPanel>
+
+
+
+                    </Grid>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Width="60"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="名前" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,5,0,5"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+                        <TextBox
+                            x:Name="MasterNameTxtBox"
+                            Padding="0,3,0,0"
+                            VerticalContentAlignment="Center"
+                            FontSize="30"
+                            Text="{Binding MasterName, UpdateSourceTrigger=PropertyChanged}"
+                            TextAlignment="Center">
+
+                            <TextBox.Resources>
+                                <Style TargetType="TextBlock">
+                                    <!--<Setter Property="CornerRadius" Value="4" />-->
+                                </Style>
+                            </TextBox.Resources>
+
+                        </TextBox>
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="60"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="緯度" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="0,5,0,5"
+                        Background="{x:Bind ViewModel.LatLongInabilityShow}"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+
+                        <TextBlock
+                            Height="50"
+                            Padding="0,3,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            PointerPressed="LatitudeMaster_PointerPressed"
+                            Text="{x:Bind ViewModel.LatitudeMaster}"
+                            TextAlignment="Center" />
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Width="60"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="標高" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Margin="0,5,0,5"
+                        Background="{x:Bind ViewModel.ElevationInabilityShow}"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+
+                        <TextBlock
+                            Height="50"
+                            Padding="0,3,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            PointerPressed="ElevationMaster_PointerPressed"
+                            Text="{x:Bind ViewModel.ElevationMaster}"
+                            TextAlignment="Center" />
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="設置方位" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="7"
+                        Margin="0,5,0,5"
+                        Background="White"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+
+                        <TextBlock
+                            Height="50"
+                            Padding="0,3,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            PointerPressed="InstallationOrientationMaster_PointerPressed"
+                            Text="{x:Bind ViewModel.InstallationOrientation}"
+                            TextAlignment="Center" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0,5,0,5"
+                        BorderThickness="0.5">
+                        <Button
+                            Command="{x:Bind ViewModel.StationDBPageMasterNavigateCommand}"
+                            Content="自局DB"
+                            FontSize="30"
+                            Style="{StaticResource ClickableButtonStyle}" />
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Width="60"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="経度" />
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Margin="0,5,0,5"
+                        Background="{x:Bind ViewModel.LatLongInabilityShow}"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+                        <TextBlock
+                            Height="50"
+                            Padding="0,3,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            PointerPressed="LongitudeMaster_PointerPressed"
+                            Text="{x:Bind ViewModel.LongitudeMaster}"
+                            TextAlignment="Center" />
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Width="98"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="ポール長" />
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        Margin="0,5,0,5"
+                        Background="White"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+
+                        <TextBlock
+                            Height="50"
+                            Padding="0,0,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            PointerPressed="PoleHeightMaster_PointerPressed"
+                            Text="{x:Bind ViewModel.PoleHeight}"
+                            TextAlignment="Center" />
+
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="6"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="雲台IPアドレス" />
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="7"
+                        Margin="0,5,0,5"
+                        Background="White"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+                        <TextBlock
+                            Height="50"
+                            Padding="0,3,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            Foreground="Gray"
+                            Text="{x:Bind ViewModel.HeadIPAddress}"
+                            TextAlignment="Center" />
+                    </Border>
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="8"
+                        Margin="0,10,20,10"
+                        HorizontalAlignment="Right"
+                        FontSize="30"
+                        Text="無線機IPアドレス" />
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="9"
+                        Margin="0,5,0,5"
+                        Background="White"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="5">
+                        <TextBlock
+                            Height="50"
+                            Padding="0,3,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="30"
+                            Foreground="Gray"
+                            Text="{x:Bind ViewModel.MasterAntennaIPAddress}"
+                            TextAlignment="Center" />
+                        <!--  Adjust padding as necessary  -->
+                    </Border>
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Width="250"
+                        Height="70"
+                        Margin="10,10"
+                        HorizontalAlignment="Left"
+                        Background="#5a5a5a"
+                        Command="{x:Bind ViewModel.NavigateCommand}"
+                        Content="戻る"
+                        FontSize="40"
+                        Foreground="White" />
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="8"
+                        Grid.ColumnSpan="2"
+                        Margin="10,10,0,10">
+                        <Button
+                            x:Name="RegisterBtn"
+                            Width="250"
+                            Height="70"
+                            HorizontalAlignment="Right"
+                            Background="#1d9dfd"
+                            Command="{x:Bind ViewModel.MasterDataRegistrationCommand}"
+                            Content="登録"
+                            FontSize="40"
+                            Foreground="White"
+                            Style="{StaticResource ClickableButtonStyle}" />
+
+                    </Border>
+
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
+    </Viewbox>
+</Page>

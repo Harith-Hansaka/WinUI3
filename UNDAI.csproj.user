@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <None Update="App.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="VIEWS\BASE\UNDAIRestartMessageBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\BASE\NumericKeyboardWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\SLAVE\SystemSettingSlaveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\SLAVE\SystemResetSettingSlaveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\SLAVE\StationDBSlaveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\SLAVE\SelfRegSlaveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\SLAVE\MainPageSlaveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\SLAVE\BaseStationRegSlaveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\SLAVE\AlarmHistorySlaveView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SystemSettingMasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SystemResetSettingMasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SubstationDB4MasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SubstationDB3MasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SubstationDB2MasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SubstationDB1MasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\StationDBMasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\Substation1ElevationProfileView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SelfRegMasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\AlarmHistoryMasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\SubstationMasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VIEWS\MASTER\MainPageMasterView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

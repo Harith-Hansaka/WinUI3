@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="UNDAI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:UNDAI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Viewbox>
+        <Grid RowDefinitions="28,*">
+
+            <!--#region Title Bar-->
+            <StackPanel
+                x:Name="TitleBar"
+                Grid.Row="0"
+                Height="32"
+                Margin="0,0,120,0"
+                Background="{ThemeResource AppBarBackgroundThemeBrush}"
+                Orientation="Horizontal">
+                <Image
+                    Height="16"
+                    Margin="8,0,0,0"
+                    Source="\RESOURCES\LOADING-SCREEN-ICON.gif" />
+                <TextBlock
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    FontWeight="SemiBold"
+                    Text="{x:Bind Title}" />
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region DataRegion-->
+            <Grid
+                Grid.Row="1"
+                Width="1920"
+                Height="1200"
+                Background="LightYellow">
+
+                <Frame x:Name="RootFrame" />
+
+            </Grid>
+            <!--#endregion-->
+
+        </Grid>
+    </Viewbox>
+</Window>
